@@ -99,8 +99,15 @@
 </main>
 <footer class="footer"><div class="shell row"><div><strong>ANAYA&CIE</strong><br><span>Services exclusivement numériques.</span></div><div>© <span id="year"></span> ANAYA&CIE · Tous droits réservés</div></div></footer>
 <div id="toast" class="toast hidden" role="status"></div>
-<script>
-const pages=[...document.querySelectorAll('.page')];
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ <script>
+const SUPABASE_URL = 'https://dyiiifhvgqgztttroprk.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'COLLE_TA_PUBLISHABLE_KEY_ICI';
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);const pages=[...document.querySelectorAll('.page')];
 function showPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
 const theme=document.getElementById('theme');
